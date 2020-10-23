@@ -1,0 +1,28 @@
+\chapter{Planteamiento del problema: objetivos específicos del TFG}
+Como se ha visto anteriormente, un sistema ideal automático de gestión de aparcamientos para PMR es lo suficientemente complejo y amplio como para tener que seleccionar parte del mismo para que se pueda desarrollar en el marco de un TFG. En caso contrario, una persona sería incapaz de implementar todas las funcionalidades posibles del sistema en un periodo corto de tiempo. Como se sabe, los créditos del TFG son 12, lo que equivale a unas 300 horas de trabajo.
+\\\\
+Para ello, sería conveniente seleccionar o simplificar aquellas partes para que el sistema funcione desde un punto de vista global, pudiéndose hacer en un tiempo razonable. Este tiempo no sólo es de implementación sino que, también, se debe dejar un porcentaje bastante elevado del mismo para un análisis exhaustivo precedente a la implantación, ver figura \ref{gantt}.
+\\\\
+Como se ha visto en el estudio del sistema automático de gestión de aparcamientos para PMR, el sistema se compone de tres capas independientes pero indispensables. Es por ello que durante la implementación de este proyecto se tendrán que hacer partes de las distintas funcionalidades de las tres capas.
+\\\\
+Por ello, la primera capa, el agente de captación de datos, debería estar incluida en este trabajo final junto a una parte de la tercera, la aplicación móvil del usuario. También, para gestionar el sistema de forma interna, se tendrían que implementar algunas de las funcionalidades de la aplicación para los administradores. Obviamente, la segunda capa, almacenamiento y tratamiento de la información del sistema también debería  crearse. En ella se creará el agente inteligente el cual le buscará al usuario la mejor plaza para estacionar.
+\\\\
+Funcionalidades como la creación de estadísticas, valoración de las plazas, poder personalizar la búsqueda de plazas…, son consideradas como secundarias en los momentos iniciales de la creación de un proyecto de tal calibre. Por esto, no van a formar parte de los objetivos a implementar en este trabajo.
+\\\\
+No obstante, y como se ha pensado en dichas funcionalidades, durante la implementación del núcleo inicial de este sistema, se tendrá en cuenta implementar el sistema de tal forma que, a posteriori, sea más fácil la inclusión de nuevas funcionalidades en el mismo.
+\\\\
+\section{Objetivos específicos}
+Por tanto, los objetivos específicos a desarrollar en este TFG serán:
+\begin{itemize}
+	\item Crear el agente de captación de datos que se dispondrá en las plazas de aparcamiento.
+	\item Configurar el sistema de almacenamiento y tratamiento de la información. Para ello se tendrá que elegir cuál sería el mejor sistema gestor de bases de datos (SGBD) para este proyecto.
+	\item Crear una aplicación móvil donde localizar las plazas de aparcamiento existentes en el sistema. Dicha aplicación, si se le marca un objetivo, mostrará una lista de las mejores plazas donde aparcar.
+	\item Crear una aplicación de escritorio que administre el sistema: añadiendo nuevas plazas, eliminando existentes, añadiendo o eliminando acreditaciones, así como que permita recibir notificaciones sobre una plaza que se encuentre ocupada por un vehículo sin acreditación.
+	\item Implementar el sistema para que sea fácil la inclusión de nuevas funcionalidades.
+\end{itemize}
+Una vez hecha esta delimitación de objetivos en el marco del TFG, se va a proceder a un análisis más formal desde un punto de vista técnico para resolver los objetivos marcados. En este análisis se pondrá de manifiesto las diferentes opciones para realizar un objetivo y, de estas opciones, se elegirá la que se considere mejor para la viabilidad del sistema.
+\\\\
+Se intentará apostar lo máximo posible por código \textit{open source} y \textit{hardware} igualmente libre para evitar problemas en un futuro venidos por las licencias, aunque la mejor elección pueda ser propietaria. Es por ello que en cada análisis se estudiarán resultados, soporte, comunidad y licencia de la herramienta a usar.
+\\\\
+Por último, después de haber hecho el análisis correspondiente, se procederá a desarrollar los objetivos en base dicho análisis.
+%% así como probar las distintas funcionalidades para asegurar el buen funcionamiento del mismo. Una vez probado las funcionalidades, se procederá a poner en marcha el sistema, llamado despliegue del sistema.

@@ -1,0 +1,41 @@
+\chapter{Listado de URIs de la API REST}
+A continuación se desglosan las funcionalidades de la API REST que se han creado para que el sistema funcione:
+\begin{itemize}
+	\item URIs referentes a plazas:
+	\begin{itemize}
+		\item \textit{/plazas}, con método GET, devuelve un listado con las plazas existentes en el sistema.
+		\item \textit{/plaza/<id>}, con método GET, devuelve el objeto plaza cuyo identificador es \textit{<id>}.
+		\item \textit{/plaza/nueva}, con método POST, añade una plaza al sistema. Necesita del parámetro obligatorio \textit{id\_ubicacion}, identificador de una ubicación existente en el sistema.
+		\item \textit{/plaza/<id>/estado/<estado>}, con método PUT, cambia el estado de la plaza cuyo identificador es \textit{<id>} al nuevo estado \textit{<estado>}.
+		\item \textit{/plaza/<id>}, con método DELETE, elimina la plaza existente cuyo identificador es \textit{<id>} del sistema.
+		\item \textit{/plazas/mal\_ocupadas}, con método GET, devuelve un listado de plazas cuyo estado es \textit{mal ocupada}.
+	\end{itemize}
+	\item URIs referentes a ubicaciones:
+	\begin{itemize}
+			\item \textit{/ubicaciones}, con método GET, devuelve un listado con las ubicaciones existentes en el sistema.
+		\item \textit{/ubicaciones/<lat\_min>\&<lat\_max>/<long\_min>\&<long\_max>}, con método GET, devuelve un listado de ubicaciones que se encuentran geoposicionadas dentro de un área cuyos límites son: \textit{<lat\_min>}, \textit{<long\_min>} y \textit{<lat\_max>}, \textit{<long\_max>}.
+		\item \textit{/ubicaciones/<lat>\&<long>}, con método GET, devuelve un listado de ubicaciones ordenado por distancia a la posición cuyas coordenadas son \textit{<lat>}, \textit{<long>} (latitud y longitud respectivamente).
+		\item \textit{/ubicaciones/<lat>\&<long>/<grano>}, con método GET, devuelve un listado de ubicaciones ordenado por distancia a la posición cuyas coordenadas son \textit{<lat>}, \textit{<long>} (latitud y longitud respectivamente) y número de plazas libres en grupos de ubicaciones que se encuentren en tramos de distancia de \textit{<grano>}.
+		\item \textit{/ubicacion/<id>}, con método GET, devuelve un los campos de la ubicación cuyo identificador en \textit{<id>}.
+		\item \textit{/ubicacion/nueva}, con método POST, añade una nueva ubicación al sistema. Necesita de los parámetros obligatorios; \textit{direccion} calle y número de la ubicación, \textit{latitud} y \textit{longitud} coordenadas de la ubicación. El parámetro \textit{observaciones} no es obligatorio e indica cualquier aclaración sobre la ubicación.
+		\item \textit{/ubicacion/<id>}, con método DELETE, elimina la ubicación existente cuyo identificador es \textit{<id>} del sistema.
+		\item \textit{/ubicacion/<id>}, con método POST, modifica la ubicación existente en el sistema cuyo identificador es \textit{<id>}. Recibe los parámetros: \textit{direccion} de forma obligatoria y \textit{observaciones}.
+	\end{itemize}
+	\item URIs referentes a acreditaciones:
+	\begin{itemize}
+		\item \textit{/acreditaciones}, con método GET, devuelve un listado con las acreditaciones existentes en el sistema.
+		\item \textit{/acreditacion/nueva}, con método POST, añade una nueva acreditación en el sistema. Necesita el parámetro obligatorio \textit{uid} que es el identificador de la ubicación.
+		\item \textit{/acreditacion/<uid>}, con método GET, comprueba si existe la acreditación cuyo identificador es \textit{<uid>} en el sistema.
+		\item \textit{/acreditacion/<uid>}, con método DELETE, elimina la acreditación existente cuyo identificador es \textit{<uid>} del sistema.
+	\end{itemize}
+	\item URIs referentes a notificaciones para aplicación móvil:
+	\begin{itemize}
+			\item \textit{/destino\_activo/nueva}, con método POST, añade un nuevo destino activo en el sistema.\\ Necesita de los parámetros obligatorios: \textit{id\_ubicación} identificador de una ubicación existente en el sistema y \textit{token} identificador del dispositivo del usuario.
+		\item \textit{/destino\_activo/<token>}, con método DELETE, elimina el destino activo asociado al dispositivo del usuario cuyo identificador es \textit{<token>} del sistema.
+	\end{itemize}
+	\newpage
+	\item URIs referentes al destino final de los usuarios:
+	\begin{itemize}
+		\item \textit{/destinos\_usuario/nueva<lat>\&<long>}, con método PUT, añade un nuevo destino final de coordenadas \textit{<lat>} y \textit{long}, latitud y longitud, al sistema.
+	\end{itemize}
+\end{itemize}

@@ -1,0 +1,29 @@
+\chapter{Población de la base de datos}
+Para comprobar que el sistema que se ha creado funciona correctamente, se necesita suministrarlo de datos. Dichos datos suelen ser creados expresamente para probar el sistema. En este caso se ha decidido usar datos reales de las plazas para PMR de la ciudad de Granada.
+\\\\
+En primer lugar se ha tenido que encontrar una fuente de información de donde poder sacar los datos reales. Por suerte, Granada cuenta con una página web \cite{movilidad} donde los habitantes y visitantes de esta ciudad pueden encontrar información relativa a tráfico, zonas restringidas, transporte público o aparcamiento entre otra información.
+\\\\
+Dentro de la parte de \textit{aparcamiento} se puede encontrar otra página con información expresa para plazas para PMR. Dicha página cuenta con un mapa donde poder localizar las plazas, así como un listado de las mismas. También, adjunta un documento \textit{KMZ} para descargar la información de las plazas de aparcamiento.
+\\\\
+Este tipo de documento es un archivo comprimido que contiene, como base principal, un documento \textit{KML} \cite{kml}. Como se explica en la referencia, dicho tipo de documento es un estándar para almacenar información relativa a datos de carácter geolocalizados.
+\\\\
+Para extraer y poblar al sistema con estos datos, se ha necesitado hacer un programa que analice y extraiga la información que necesita el sistema del documento \textit{KML}. Una vez extraída la información, con ayuda de otro programa que hace llamadas a las distintas URIs de la API REST, se ha logrado dar de alta esta información en el sistema.
+\\\\
+En conclusión y para automatizar esta labor, estos programas se pueden ejecutar de forma automática a través de un procedimiento, \textit{script}, que primero descarga el archivo \textit{KMZ} de la página web oficial y lo descomprime. Luego llama a los programas anteriormente descritos para extraer la información necesitada y añadir dicha información al sistema.
+\\\\
+También, en este último procedimiento se puede especificar, si se quiere, el número de ubicaciones a añadir en el sistema para, por ejemplo, probar su funcionamiento. A su vez, si se indica, el estado de las plazas de las ubicaciones que se creen en el sistema tomaría valor. En caso contrario, al crear una plaza, por defecto, su estado es ``Información no disponible''.
+\\\\
+Para probar esta serie de procedimientos y el sistema que se ha creado, se va a poblar la base de datos con todos los aparcamientos de la ciudad de Granada.
+%\begin{figure}[H]
+%	\centering
+%	\includegraphics[width=\textwidth]{imagenes/administracion_poblacion.png}
+%	\caption{Población de la base de datos. Vista de ubicaciones: aplicación de administración}
+%	\label{administracion_poblacion}
+%\end{figure}
+%\begin{figure}[H]
+%	\centering
+%	\includegraphics[width=0.35\textwidth]{imagenes/app_poblacion.jpg}
+%	\caption{Vista listado de ubicaciones cercanas: aplicación de usuario}
+%	\label{app_poblacion}
+%\end{figure}
+Tal y como se puede ver en las figuras \ref{administracion_poblacion} y \ref{app_poblacion}, el sistema ya tiene cargadas todas las plazas de Granada. El número de plazas que está soportando es 836, distribuidas en 524 ubicaciones.
