@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>APP - Acreditaciones</title>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+  <!-- Custom styles for this template -->
+  <style type="text/css">
+    body {
+      padding-top: 5rem;
+      background-color: #fffcfc;
+      background-image: url("https://www.transparenttextures.com/patterns/church.png");
+    }
+  </style>
+</head>
+
+
+<body>
+
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+    <a class="navbar-brand" href="index.html">APP</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="plazas.html">Plazas</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="ubicaciones.html">Ubicaciones</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Acreditaciones<span class="sr-only">(current)</span></a>
+        </li>
+        <!--
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#">Disabled</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdown01">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                </li>
+-->
+      </ul>
+      <!--
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+-->
+    </div>
+  </nav>
+
+  <main role="main" class="container" data-ng-app="myApp" data-ng-controller="acreditaciones_control">
+    <div class="row">
+      <div class="col-md-12">
+        <h1>Acreditaciones</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-ng-click="reset_nuevo()" data-target="#modalNuevo">Nueva acreditación</button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <table class="table" id="tabla_acreditaciones">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Eliminar</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr data-ng-repeat="a in acreditaciones">
+              <th scope="row">{{a.uid}}</th>
+              <td><button type="button" class="btn btn-danger" data-ng-click="eliminarModal(a.uid)">Eliminar</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Modal eliminar -->
+    <div class="modal fade" id="modalEliminar" tabindex="-1" role="dialog" aria-labelledby="exampleModalEliminar" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalEliminar">Eliminar acreditación de aparcamiento</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+          </div>
+          <div class="modal-body">
+            ¿Quiere eliminar la acreditación {{uid_eliminar}}?
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+            <button type="button" class="btn btn-danger" data-ng-click="eliminarAcreditacion(uid_eliminar)">Eliminar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal nuevo -->
+    <div class="modal fade" id="modalNuevo" tabindex="-1" role="dialog" aria-labelledby="exampleModalNuevo" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalNuevo">Nueva acreditación de aparcamiento</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+          </div>
+          <div class="modal-body">
+            <label for="uid_nueva">UID: </label>
+            <input type="text" id="uid_nueva" required/>
+            <div class="alert alert-danger" id="uid_vali" role="alert">
+              El uid de la acreditación es obligatorio.
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+            <button type="button" class="btn btn-primary" data-ng-click="crearAcreditacion()">Crear</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+  <!-- /.container -->
+
+
+  <!-- Bootstrap core JavaScript
+    ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.min.js"></script>
+
+  <script>
+    var app = angular.module('myApp', []);
+    app.controller('acreditaciones_control', function($scope, $http, $timeout, $interval) {
+      $scope.carga_acreditaciones = function() {
+        console.log("cargar");
+        $http.get("http://192.168.1.x:8080/acreditaciones").then(function(response) {
+          $scope.acreditaciones = response.data.acreditaciones
+        });
+      };
+
+      $scope.carga_acreditaciones();
+
+      // $interval($scope.carga_acreditaciones, 10000);
+
+      $scope.eliminarModal = function(uid) {
+        $scope.uid_eliminar = uid;
+        angular.element("#modalEliminar").modal("show");
+      };
+      $scope.eliminarAcreditacion = function(uid) {
+        $scope.uid_eliminar = -1;
+        $http.delete("http://192.168.1.x:8080/acreditacion/" + uid);
+        angular.element("#modalEliminar").modal("hide");
+        $timeout($scope.carga_acreditaciones, 1000);
+      };
+
+      $scope.crearAcreditacion = function() {
+        if (angular.element("#uid_nueva").val() == "") {
+          angular.element("#uid_vali").show();
+        } else {
+          var datos = JSON.stringify({
+            uid: angular.element("#uid_nueva").val()
+          });
+          $http.post("http://192.168.1.x:8080/acreditacion/nueva", datos);
+          angular.element("#modalNuevo").modal("hide");
+          $timeout($scope.carga_acreditaciones, 1000);
+        }
+      };
+
+      $scope.reset_nuevo = function() {
+        angular.element("#uid_nueva").val("");
+        angular.element("#uid_vali").hide();
+      }
+    });
+  </script>
+
+  <script src="bootstrap-notify.min.js"></script>
+  <script src="alertas.js"></script>
+</body>
+
+</html>
