@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Localizador aparcamiento PMR</string>
+    <string name="title_activity_app">Localizador aparcamiento PMR</string>
+    <string name="notifications_admin_channel_name">aparcamientos</string>
+    <string name="notifications_admin_channel_description">aparcamientos</string>
+    <string name="url_servidor">http://192.168.1.x:8080/</string>
+</resources>
